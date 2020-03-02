@@ -26,6 +26,10 @@ class User extends Model {
     return this;
   }
 
+  static associate(models) {
+    this.belongsTo(models.File, { forcignKey: 'avatar_id' });
+  }
+
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
